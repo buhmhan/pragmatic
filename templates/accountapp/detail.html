@@ -6,10 +6,24 @@
 <div style="text-align: center; max-width: 500px; margin: 4rem auto">
   <div>
     <p>{{ target_user.date_joined }}</p>
+
+    <img
+      src="{{ target_user.profile.image.url }}"
+      alt=""
+      style="
+        height: 10rem;
+        width: 10rem;
+        border-radius: 10rem;
+        margin-bottom: 2rem;
+      "
+    />
+
     {% if target_user.profile %}
     <h2 style="font-family: NanumSquareNeoB">
       {{ target_user.profile.nickname }}
+      <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">edit</a>
     </h2>
+    <h5>{{ target_user.profile.message }}</h5>
     {% else %}
     <h4><a href="{% url 'profileapp:create' %}">Create Profile</a></h4>
     {% endif %}
