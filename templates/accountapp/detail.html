@@ -7,6 +7,7 @@
   <div>
     <p>{{ target_user.date_joined }}</p>
 
+    {% if target_user.profile %}
     <img
       src="{{ target_user.profile.image.url }}"
       alt=""
@@ -17,15 +18,25 @@
         margin-bottom: 2rem;
       "
     />
-
-    {% if target_user.profile %}
     <h2 style="font-family: NanumSquareNeoB">
       {{ target_user.profile.nickname }}
+      <!--  -->
+      {% if user == target_user %}
       <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">edit</a>
+      {% endif %}
+      <!--  -->
     </h2>
     <h5>{{ target_user.profile.message }}</h5>
     {% else %}
-    <h4><a href="{% url 'profileapp:create' %}">Create Profile</a></h4>
+    <h4>
+      <!--  -->
+      {% if user == target_user %}
+      <a href="{% url 'profileapp:create' %}">Create Profile</a>
+      {% else %}
+      <h4>닉네임 미설정</h4>
+      {% endif %}
+      <!--  -->
+    </h4>
     {% endif %}
   </div>
 
