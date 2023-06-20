@@ -6,7 +6,13 @@
 <div style="text-align: center; max-width: 500px; margin: 4rem auto">
   <div>
     <p>{{ target_user.date_joined }}</p>
-    <h2 style="font-family: NanumSquareNeoB">{{ target_user.username }}</h2>
+    {% if target_user.profile %}
+    <h2 style="font-family: NanumSquareNeoB">
+      {{ target_user.profile.nickname }}
+    </h2>
+    {% else %}
+    <h4><a href="{% url 'profileapp:create' %}">Create Profile</a></h4>
+    {% endif %}
   </div>
 
   {% if user == target_user %}
