@@ -10,9 +10,17 @@
   </div>
 
   {% if user == target_user %}
-  <a href="{% url 'accountapp:update' pk=user.pk %}">
-    <button class="btn btn-dark rounded-pill col-6 mt-3">Change Info</button>
-  </a>
+  <div>
+    <a href="{% url 'accountapp:update' pk=user.pk %}">
+      <button class="btn btn-dark rounded-pill col-6 mt-3">Change Info</button>
+    </a>
+  </div>
+  <div>
+    <a href="{% url 'accountapp:delete' pk=user.pk %}">
+      <button class="btn btn-dark rounded-pill col-6 mt-3">Quit</button>
+    </a>
+  </div>
+
   {% endif %}
 </div>
 
