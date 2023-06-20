@@ -19,5 +19,16 @@
   {% if hello_world_output %}
   <h1>{{ hello_world_output.text }}</h1>
   {% endif %}
+  <!--  -->
+  {% if hello_world_list %}
+  <div>
+    <h1>글 목록</h1>
+    <ul>
+      {% for hello_world in hello_world_list %}
+      <li>{{ hello_world.text }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
