@@ -22,3 +22,9 @@
 .pragmatic_header_logo {
   font-family: Lobster;
 }
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+}
