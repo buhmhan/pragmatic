@@ -1,0 +1,60 @@
+{% extends 'base.html'%} {% load static %}
+
+<!--  -->
+{% block content %}
+
+<style>
+  .container {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .container div {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+  }
+
+  .container img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  .container a {
+    width: 40%;
+    max-width: 250px;
+  }
+</style>
+
+{% if project_list %}
+<div class="container">
+  {% for project in project_list %}
+  <a href="{% url 'projectapp:detail' pk=project.pk %}">
+    <!--  -->
+    {% include 'snippets/project_card.html' with project=project %}
+    <!--  -->
+  </a>
+  {% endfor %}
+</div>
+<script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+<div class="text-center">
+  <h4>No Projects</h4>
+</div>
+{% endif %}
+<!--  -->
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+<div style="text-align: center">
+  <a
+    href="{% url 'projectapp:create' %}"
+    class="btn btn-dark rounded-pill col-3 mt-3 mb-3"
+    >Create project</a
+  >
+</div>
+
+{% endblock %}
