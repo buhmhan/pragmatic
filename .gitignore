@@ -110,3 +110,6 @@ static_collected
 .vscode/settings.json
 
 media/
+
+Dockerfile
+nginx.conf
